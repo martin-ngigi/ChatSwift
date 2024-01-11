@@ -15,7 +15,7 @@ struct RegistrationView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack{
+        VStack{ // We didn't wrap this in NavigationStack because thet Root View i.e. LoginView is already wrapped in NavigationStack
             Spacer()
             
             // logo image
