@@ -9,6 +9,14 @@ import Foundation
 import Firebase
 
 class AuthService {
+    
+    @Published var userSession: FirebaseAuth.User?
+    
+    init() {
+        self.userSession = Auth.auth().currentUser
+        print("DEBUG: User session id is \(userSession?.uid)")
+    }
+    
     func login(withEmail email: String, password: String) async throws {
         
     }
