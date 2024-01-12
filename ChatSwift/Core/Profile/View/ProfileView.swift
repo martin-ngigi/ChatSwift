@@ -25,11 +25,6 @@ struct ProfileView: View {
                             .clipShape(Circle())
                     }
                     else {
-//                        Image(user.profileImageUrl ?? "person")
-//                            .resizable()
-//                            .scaledToFill()
-//                            .frame(width: 80, height: 80)
-//                            .clipShape(Circle())
                         
                         CircularImageProfileView(user: user, size: .xLarge)
                     }
@@ -60,7 +55,7 @@ struct ProfileView: View {
                 
                 Section {
                     Button("Log Out") {
-                        
+                        AuthService.shared.signOut()
                     }
                     
                     Button("Delete Account") {

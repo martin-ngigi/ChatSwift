@@ -18,7 +18,7 @@ class ContentViewModel: ObservableObject {
     
     private func setupSubScribers() {
         // listens for updates when user session changes values and store
-        AuthService().$userSession.sink { [weak self] userSessionFromAuthService in
+        AuthService.shared.$userSession.sink { [weak self] userSessionFromAuthService in
             self?.userSession = userSessionFromAuthService
         }.store(in: &cancelables)
     }
