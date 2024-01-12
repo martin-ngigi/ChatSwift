@@ -10,6 +10,7 @@ import SwiftUI
 struct InboxView: View {
     
     @State private var showNewMessageView = false
+    @State private var user = User.MOCK_USER
     
     var body: some View {
         NavigationStack{
@@ -24,13 +25,23 @@ struct InboxView: View {
                 .listStyle(PlainListStyle())
                 .frame(height: UIScreen.main.bounds.height - 120)
             }
+            .navigationDestination(for: User.self, destination: { user in
+                ProfileView( user: user)
+            })
             .fullScreenCover(isPresented: $showNewMessageView, content: { // This shows new message UI
                 NewMessageView()
             })
-            .toolbar{
+            .toolbar{ // TopBar menu with profilePic, Chats,
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
-                        Image(systemName: "person.circle.fill")
+                        // NavigationLink with value and label, this will help us pass the user object to the next page i.e. ProfileView Page. Also add .navigationDestination(){}
+                        NavigationLink(value: user) {
+                            Image(user.profileImageUrl ?? "person")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 32, height: 32)
+                                .clipShape(Circle())
+                        }
                         
                         Text("Chats")
                             .font(.title)
