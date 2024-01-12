@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3060FDF2B50FE5F0071964E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3060FDE2B50FE5F0071964E /* ProfileViewModel.swift */; };
 		A3B6AACD2B4FCBCE00796CE4 /* ChatSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6AACC2B4FCBCE00796CE4 /* ChatSwiftApp.swift */; };
 		A3B6AACF2B4FCBCE00796CE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6AACE2B4FCBCE00796CE4 /* ContentView.swift */; };
 		A3B6AAD12B4FCBD100796CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3B6AAD02B4FCBD100796CE4 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A3060FDE2B50FE5F0071964E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		A3B6AAC92B4FCBCE00796CE4 /* ChatSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B6AACC2B4FCBCE00796CE4 /* ChatSwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSwiftApp.swift; sourceTree = "<group>"; };
 		A3B6AACE2B4FCBCE00796CE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				A3B6AAF62B500A2100796CE4 /* SettingsOptionsViewModel.swift */,
+				A3060FDE2B50FE5F0071964E /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				A3B6AACF2B4FCBCE00796CE4 /* ContentView.swift in Sources */,
 				A3B6AAE82B4FDF8C00796CE4 /* InboxView.swift in Sources */,
 				A3B6AAEB2B4FE0FD00796CE4 /* ActiveNowView.swift in Sources */,
+				A3060FDF2B50FE5F0071964E /* ProfileViewModel.swift in Sources */,
 				A3B6AACD2B4FCBCE00796CE4 /* ChatSwiftApp.swift in Sources */,
 				A3B6AAF72B500A2100796CE4 /* SettingsOptionsViewModel.swift in Sources */,
 				A3B6AAE52B4FDDC200796CE4 /* RegistrationView.swift in Sources */,
