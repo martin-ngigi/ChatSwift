@@ -36,11 +36,12 @@ struct InboxView: View {
                     HStack {
                         // NavigationLink with value and label, this will help us pass the user object to the next page i.e. ProfileView Page. Also add .navigationDestination(){}
                         NavigationLink(value: user) {
-                            Image(user.profileImageUrl ?? "person")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 32, height: 32)
-                                .clipShape(Circle())
+//                            Image(user.profileImageUrl ?? "person")
+//                                .resizable()
+//                                .scaledToFill()
+//                                .frame(width: 32, height: 32)
+//                                .clipShape(Circle())
+                            CircularImageProfileView(user: user, size: .xSmall)
                         }
                         
                         Text("Chats")
