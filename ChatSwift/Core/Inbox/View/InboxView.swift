@@ -12,6 +12,8 @@ struct InboxView: View {
     @State private var showNewMessageView = false
 //    @State private var user = User.MOCK_USER
     @StateObject var viewModel = InboxViewModel()
+    @State private var selectedUser: User?
+    @State private var showChat = false
     
     private var user: User? {
         return viewModel.currentUser
@@ -30,11 +32,20 @@ struct InboxView: View {
                 .listStyle(PlainListStyle())
                 .frame(height: UIScreen.main.bounds.height - 120)
             }
+            .onChange(of: selectedUser, perform: { newValue in
+                showChat = newValue != nil // show chat only if newValue is not nil
+            })
             .navigationDestination(for: User.self, destination: { user in
                 ProfileView( user: user)
             })
+            .navigationDestination(isPresented: $showChat, destination: {
+                // Navigate to ChatView() from InboxView only after selecting User
+                if let user = selectedUser {
+                    ChatView(user: user)
+                }
+            })
             .fullScreenCover(isPresented: $showNewMessageView, content: { // This shows new message UI
-                NewMessageView()
+                NewMessageView(selectedUser: $selectedUser)
             })
             .toolbar{ // TopBar menu with profilePic, Chats,
                 ToolbarItem(placement: .navigationBarLeading) {
