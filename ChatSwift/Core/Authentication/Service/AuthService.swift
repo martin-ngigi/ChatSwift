@@ -17,7 +17,7 @@ class AuthService {
     
     init() {
         self.userSession = Auth.auth().currentUser
-        Task { try await UserService.shared.fetchCurrentUser()}
+        loadCurrentUserData()
         print("DEBUG: User session id is \(userSession?.uid)")
     }
     
@@ -26,6 +26,7 @@ class AuthService {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
+            loadCurrentUserData()
         }
         catch {
             print("DEBU: Failed to login with error \(error.localizedDescription)")
@@ -38,6 +39,7 @@ class AuthService {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
             try await self.uploadUserData(email: email, fullname: fullname, id: result.user.uid)
+            loadCurrentUserData()
             print("DEBUG: Create user \(result.user.uid)")
         }
         catch {
@@ -50,6 +52,7 @@ class AuthService {
         do {
             try Auth.auth().signOut() // signout from firebase
             self.userSession = nil // updates routing logic i.e. clear user session
+            UserService.shared.currentUser = nil // wipes out current user data model
         }
         catch {
             print("DEBUG: failed to signout with error \(error.localizedDescription)")
@@ -60,5 +63,9 @@ class AuthService {
         let user = User(fullname: fullname, email: email, profileImageUrl: nil)
         guard let encodedUser = try? Firestore.Encoder().encode(user) else { return } // import FirebaseFirestoreSwift
         try await Firestore.firestore().collection("users").document(id).setData(encodedUser)
+    }
+    
+    private func loadCurrentUserData() {
+        Task { try await UserService.shared.fetchCurrentUser()}
     }
 }
