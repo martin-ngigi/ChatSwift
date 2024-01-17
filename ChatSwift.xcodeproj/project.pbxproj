@@ -46,6 +46,7 @@
 		A306102F2B5136770071964E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306102E2B5136770071964E /* RegistrationViewModel.swift */; };
 		A30610312B5136A40071964E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30610302B5136A40071964E /* AuthService.swift */; };
 		A30610362B51423B0071964E /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30610352B51423B0071964E /* ContentViewModel.swift */; };
+		A3471C502B57DC8F000D7054 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C4F2B57DC8F000D7054 /* UserService.swift */; };
 		A3B6AACD2B4FCBCE00796CE4 /* ChatSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6AACC2B4FCBCE00796CE4 /* ChatSwiftApp.swift */; };
 		A3B6AACF2B4FCBCE00796CE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6AACE2B4FCBCE00796CE4 /* ContentView.swift */; };
 		A3B6AAD12B4FCBD100796CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3B6AAD02B4FCBD100796CE4 /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		A306102E2B5136770071964E /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		A30610302B5136A40071964E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A30610352B51423B0071964E /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		A3471C4F2B57DC8F000D7054 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		A3B6AAC92B4FCBCE00796CE4 /* ChatSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B6AACC2B4FCBCE00796CE4 /* ChatSwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSwiftApp.swift; sourceTree = "<group>"; };
 		A3B6AACE2B4FCBCE00796CE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		A3B6AADC2B4FCC6B00796CE4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A3471C4F2B57DC8F000D7054 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				A3B6AACF2B4FCBCE00796CE4 /* ContentView.swift in Sources */,
 				A3B6AAE82B4FDF8C00796CE4 /* InboxView.swift in Sources */,
 				A306102D2B5136490071964E /* LoginViewModel.swift in Sources */,
+				A3471C502B57DC8F000D7054 /* UserService.swift in Sources */,
 				A3B6AAEB2B4FE0FD00796CE4 /* ActiveNowView.swift in Sources */,
 				A3060FDF2B50FE5F0071964E /* ProfileViewModel.swift in Sources */,
 				A3060FE12B5106770071964E /* User.swift in Sources */,
