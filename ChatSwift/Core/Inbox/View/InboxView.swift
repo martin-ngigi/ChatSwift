@@ -21,20 +21,36 @@ struct InboxView: View {
     
     var body: some View {
         NavigationStack{
-            ScrollView { // We used Scrollview here because Scrollview has additional features such as swipe
-                ActiveNowView()
-                
+
                 List {
                     //ForEach(0 ... 10, id: \.self) { message in
+                    ActiveNowView()
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets())
+                        .padding(.vertical)
+                        .padding(.horizontal, 4)
+                    
                     ForEach(viewModel.recentMessages) { message in
-                        InboxRowView(message: message)
+                        ZStack {// This Zstack will help in removing the chevron icon that is automatically added by apple in NavigationLink, since we already have our own chevron icon
+                            NavigationLink(value: message) { // Naviage to Chat Page and pass message
+                                EmptyView()
+                            }.opacity(0.0)
+                            
+                            InboxRowView(message: message)
+
+                        }
+                        
+                        
                     }
                 }
-                .listStyle(PlainListStyle())
-                .frame(height: UIScreen.main.bounds.height - 120)
-            }
+            .listStyle(PlainListStyle())
             .onChange(of: selectedUser, perform: { newValue in
                 showChat = newValue != nil // show chat only if newValue is not nil
+            })
+            .navigationDestination(for: Message.self, destination: { message in
+                if let user = message.user {
+                    ChatView(user: user)
+                }
             })
             .navigationDestination(for: User.self, destination: { user in
                 ProfileView( user: user)

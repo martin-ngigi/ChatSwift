@@ -30,7 +30,7 @@ struct InboxRowView: View {
             }
             
             HStack {
-                Text("Yesterday")
+                Text(message.timstampString)
                 
                 Image(systemName: "chevron.right")
             }

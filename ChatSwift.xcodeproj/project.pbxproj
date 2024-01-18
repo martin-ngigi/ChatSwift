@@ -82,6 +82,7 @@
 		A3A44B362B590ADE005AE19A /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A44B352B590ADE005AE19A /* ChatService.swift */; };
 		A3A44B3A2B590BCC005AE19A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A44B392B590BCC005AE19A /* Constants.swift */; };
 		A3A44B3D2B591A21005AE19A /* InboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A44B3C2B591A21005AE19A /* InboxService.swift */; };
+		A3A44B3F2B59330B005AE19A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A44B3E2B59330B005AE19A /* Date.swift */; };
 		A3B6AACD2B4FCBCE00796CE4 /* ChatSwiftApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6AACC2B4FCBCE00796CE4 /* ChatSwiftApp.swift */; };
 		A3B6AACF2B4FCBCE00796CE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6AACE2B4FCBCE00796CE4 /* ContentView.swift */; };
 		A3B6AAD12B4FCBD100796CE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3B6AAD02B4FCBD100796CE4 /* Assets.xcassets */; };
@@ -118,6 +119,7 @@
 		A3A44B352B590ADE005AE19A /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		A3A44B392B590BCC005AE19A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3A44B3C2B591A21005AE19A /* InboxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxService.swift; sourceTree = "<group>"; };
+		A3A44B3E2B59330B005AE19A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		A3B6AAC92B4FCBCE00796CE4 /* ChatSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B6AACC2B4FCBCE00796CE4 /* ChatSwiftApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSwiftApp.swift; sourceTree = "<group>"; };
 		A3B6AACE2B4FCBCE00796CE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -356,8 +358,8 @@
 			children = (
 				A3A44B372B590BBB005AE19A /* Utils */,
 				A3B6AADF2B4FCC7400796CE4 /* App */,
-				A3B6AADB2B4FCC6900796CE4 /* Extensions */,
 				A3B6AADE2B4FCC7000796CE4 /* Core */,
+				A3B6AADB2B4FCC6900796CE4 /* Extensions */,
 				A3B6AADD2B4FCC6D00796CE4 /* Model */,
 				A3B6AADC2B4FCC6B00796CE4 /* Service */,
 				A3B6AAD02B4FCBD100796CE4 /* Assets.xcassets */,
@@ -379,6 +381,7 @@
 		A3B6AADB2B4FCC6900796CE4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A3A44B3E2B59330B005AE19A /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3471C962B580B17000D7054 /* ChatViewModel.swift in Sources */,
+				A3A44B3F2B59330B005AE19A /* Date.swift in Sources */,
 				A3060FE62B5114FE0071964E /* CircularImageProfileView.swift in Sources */,
 				A3471C542B57DEC9000D7054 /* InboxViewModel.swift in Sources */,
 				A306102F2B5136770071964E /* RegistrationViewModel.swift in Sources */,
