@@ -20,7 +20,6 @@ class ChatViewModel: ObservableObject {
     func observeMessages() {
         service.observeMessages() { messages in
             self.messages.append(contentsOf: messages)
-            print("DEBUG: All Messages are \(messages)")
         }
     }
     

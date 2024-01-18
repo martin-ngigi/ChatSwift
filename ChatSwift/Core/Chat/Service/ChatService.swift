@@ -19,6 +19,9 @@ struct ChatService {
         let currentUserRef = FirestoreConstants.MessagesCollection.document(currentUid).collection(chatPartnerId).document() // here we are using ".document()" , this will create new document with id
         let chatPartnerRef = FirestoreConstants.MessagesCollection.document(chatPartnerId).collection(currentUid)
         
+        let recentCurrentUserRef = FirestoreConstants.MessagesCollection.document(currentUid).collection("recent-messages").document(chatPartnerId)
+        let recentPartnerRef = FirestoreConstants.MessagesCollection.document(chatPartnerId).collection("recent-messages").document(currentUid)
+        
         let messageId = currentUserRef.documentID
         
         let message = Message(messageId: messageId,
@@ -30,8 +33,13 @@ struct ChatService {
         
         guard let messageData = try? Firestore.Encoder().encode(message) else { return }
         
+        // actual messages
         currentUserRef.setData(messageData)
         chatPartnerRef.document(messageId).setData(messageData)
+        
+        // recent message
+        recentCurrentUserRef.setData(messageData)
+        recentPartnerRef.setData(messageData)
     }
     
 func observeMessages( completion: @escaping([Message]) -> Void) { // Completion Handler so that we can use addSnapshotListener which is real time as compared to async await which doesn't have addSnapshotListener
@@ -45,8 +53,19 @@ func observeMessages( completion: @escaping([Message]) -> Void) { // Completion 
        
        print("Query message result: \(query)")
        
-       query.addSnapshotListener { snapshot, _ in
-           guard let changes = snapshot?.documentChanges.filter({ $0.type == .added }) else { return }
+       query.addSnapshotListener { snapshot, error in
+           if let error = error {
+               print("DEBUG: ChatService, observeRecentMessages loading messages error \(error.localizedDescription)")
+               return
+           }
+           
+           guard let changes = snapshot?.documentChanges.filter({
+               $0.type == .added
+               //|| $0.type == .modified
+               //|| $0.type == .removed
+           })
+           else { return } // " .added" This will load messages that were added and so on ...
+           
            var messages = changes.compactMap({try? $0.document.data(as: Message.self)})
            
            for (index, message) in messages.enumerated() where message.fromId != currentUid {

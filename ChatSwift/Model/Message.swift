@@ -31,3 +31,7 @@ struct Message: Identifiable, Codable, Hashable {
         return fromId == Auth.auth().currentUser?.uid
     }
 }
+
+extension Message {
+    static let MOCK_MESSAGE = Message(fromId: NSUUID().uuidString, toId: NSUUID().uuidString, messageText: "Hello Message", timestamp: Timestamp())
+}
