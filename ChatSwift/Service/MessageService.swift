@@ -25,13 +25,38 @@ struct MessageService {
                               fromId: currentUid,
                               toId: chatPartnerId,
                               messageText: messageText,
-                              timeStamp: Timestamp()
+                              timestamp: Timestamp()
         )
         
         guard let messageData = try? Firestore.Encoder().encode(message) else { return }
         
         currentUserRef.setData(messageData)
         chatPartnerRef.document(messageId).setData(messageData)
+    }
+    
+   static func observeMessages(chatPartner: User, completion: @escaping([Message]) -> Void) { // Completion Handler so that we can use addSnapshotListener which is real time as compared to async await which doesn't have addSnapshotListener
+       guard let currentUid = Auth.auth().currentUser?.uid else { return }
+       let chatPartnerId = chatPartner.id
+        
+       let query = messagesCollection
+           .document(currentUid)
+           .collection(chatPartnerId)
+           .order(by: "timestamp", descending: false)
+       
+       print("Query message result: \(query)")
+       
+       query.addSnapshotListener { snapshot, _ in
+           guard let changes = snapshot?.documentChanges.filter({ $0.type == .added }) else { return }
+           var messages = changes.compactMap({try? $0.document.data(as: Message.self)})
+           
+           for (index, message) in messages.enumerated() where message.fromId != currentUid {
+               messages[index].user = chatPartner
+           }
+           print("addSnapshotListener messages result: \(messages)")
+
+           completion(messages)
+       }
+        
     }
     
 }
