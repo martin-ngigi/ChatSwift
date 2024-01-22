@@ -40,8 +40,10 @@ struct ChatView: View {
                 }
                 
                 // messages
-                ForEach(viewModel.messages){ message in
-                    ChatMessageCell(message: message)
+                LazyVStack{ // LazyVStack will render only needed messages. i.e. pagination
+                    ForEach(viewModel.messages){ message in
+                        ChatMessageCell(message: message)
+                    }
                 }
                 
             }
@@ -71,6 +73,8 @@ struct ChatView: View {
                         .padding()
                 }
             }
+            .navigationTitle(user.fullname)
+            .navigationBarTitleDisplayMode(.inline)
             .padding()
         }
     }

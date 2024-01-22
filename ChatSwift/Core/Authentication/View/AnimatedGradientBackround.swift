@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AnimatedGradientBackround: View {
     
-    let colors : [Color] = [.red, .blue, .green]
+    let colors : [Color] = [.red, .blue, .green, .yellow]
     @State var animatedGradient: Bool = false
     
     var body: some View {
